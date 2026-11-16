@@ -1,4 +1,4 @@
-# MJ 彩蛋回归 · LSPosed 模块代码审查报告
+# MJ你快回来吧 · LSPosed 模块代码审查报告
 
 > 路径说明：本文写作于目录整理之前，文中 `com.mjcomeback.easteregg` 现为 `io.github.sjtt2.mjcomeback`；
 > `tools/wiki-modern-api.md` 现在 `docs/wiki-modern-api.md`，`tools/dexstrings.py` 现在 `tools/scratch/dexstrings.py`。

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MJ 彩蛋回归</string>
+    <string name="app_name">MJ你快回来吧</string>
     <string name="module_description">在抖音评论区 / 私信发送 MJ，唤回蜘蛛侠彩蛋特效（LSPosed 模块，基于 libxposed API 102）。</string>
 </resources>

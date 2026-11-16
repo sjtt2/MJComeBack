@@ -1,4 +1,4 @@
-# MJ 彩蛋回归（抖音 / TikTok LSPosed 模块）
+# MJ你快回来吧（抖音 / TikTok LSPosed 模块）
 
 在抖音的**评论区、私信、群聊**输入框里**发送** `mj`，重新播放当年那个蜘蛛侠彩蛋动画
 （和原版一样：打字时不出现，消息发出去才出现）。
@@ -140,7 +140,7 @@ SDK 路径写在 `local.properties`（`sdk.dir=...`），这个文件不进仓�
    > 包名已改为 `io.github.sjtt2.mjcomeback`。如果之前装过旧包（`com.mjcomeback.easteregg`），
    > 那个是独立的应用 id，请先卸载旧的，否则桌面上会有两个图标。
 
-2. 在 LSPosed 中启用「MJ 彩蛋回归」，作用域勾选 **抖音**（已预置 `com.ss.android.ugc.aweme`、
+2. 在 LSPosed 中启用「MJ你快回来吧」，作用域勾选 **抖音**（已预置 `com.ss.android.ugc.aweme`、
    TikTok 的两个包名）；
 3. 强制停止抖音后重新打开；
 4. 打开评论区或私信，输入 `mj`。
