@@ -1,5 +1,8 @@
 # MJ 彩蛋回归 · LSPosed 模块代码审查报告
 
+> 路径说明：本文写作于目录整理之前，文中 `com.mjcomeback.easteregg` 现为 `io.github.sjtt2.mjcomeback`；
+> `tools/wiki-modern-api.md` 现在 `docs/wiki-modern-api.md`，`tools/dexstrings.py` 现在 `tools/scratch/dexstrings.py`。
+
 审查对象：`app/src/main/java/com/mjcomeback/easteregg/*`、`AndroidManifest.xml`、`build.gradle.kts`、
 `META-INF/xposed/{module.prop,java_init.list,scope.list}`、libxposed API 102 源码（`tools/libxposed/src`）、
 `tools/wiki-modern-api.md`、`README.md`、`tools/build_assets.ps1`。

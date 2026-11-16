@@ -33,23 +33,39 @@
 ## 目录结构
 
 ```
-app/src/main/java/io/github/sjtt2/mjcomeback/
-  ModuleMain.java      Xposed 入口：进程过滤 + hook 安装
-  MjEngine.java        触发判定（关键词、冷却、输入法组词过滤）
-  MjKeywords.java      关键词匹配规则
-  MjSettings.java      配置（宿主读 Remote Preferences，模块 App 写同一份）
-  MjAssets.java        从模块 APK 里读素材（ZipFile，不依赖宿主 AssetManager）
-  MjOverlay.java       动画 + 音效播放器
-  MjApp.java           注册 libxposed/service
-  MjService.java       LSPosed 服务句柄
-  SettingsActivity.java 设置页（含“试一试”输入框与预览按钮）
-app/src/main/resources/META-INF/xposed/
-  java_init.list       入口类
-  module.prop          minApiVersion=102 / targetApiVersion=102 / staticScope=true
-  scope.list           预置抖音 + TikTok 三个包名
-assets/source/         原版双蒙版素材（mp4）
-assets/gen/            中间产物（可删）
-tools/make_icon.py     从动画帧生成 App 图标
+.
+├─ app/                          模块本体（标准 AGP 单模块布局）
+│  ├─ src/main/java/io/github/sjtt2/mjcomeback/
+│  │   ModuleMain.java           Xposed 入口：进程过滤 + hook 安装
+│  │   MjEngine.java             触发判定（关键词、冷却、输入法组词过滤）
+│  │   MjKeywords.java           关键词匹配规则
+│  │   MjSettings.java           配置（宿主读 Remote Preferences，模块 App 写同一份）
+│  │   MjAssets.java             从模块 APK 里读素材（ZipFile，不依赖宿主 AssetManager）
+│  │   MjOverlay.java            动画 + 音效播放器
+│  │   MjApp.java                注册 libxposed/service
+│  │   MjService.java            LSPosed 服务句柄
+│  │   SettingsActivity.java     设置页（含“试一试”输入框与预览按钮）
+│  ├─ src/main/assets/mj/        构建产物：动画 WebP + 音效（由 tools/build_assets.ps1 生成）
+│  ├─ src/main/res/mipmap-*/     图标（legacy + 自适应两层，由 tools/make_icon.py 生成）
+│  ├─ src/main/resources/META-INF/xposed/
+│  │   java_init.list            入口类
+│  │   module.prop               minApiVersion=102 / targetApiVersion=102 / staticScope=true
+│  │   scope.list                预置抖音 + TikTok 三个包名
+│  └─ libs/                      libxposed api / service 的 classes.jar（API 102）
+├─ assets/source/                原版「双蒙版」素材 mp4（转码的输入）
+├─ tools/
+│  ├─ build_assets.ps1           mp4 → 动画 WebP + m4a
+│  ├─ make_icon.py               动画帧 → App 图标
+│  ├─ kwtest/KwTest.java         MjKeywords 的单元测试（javac 直接跑）
+│  ├─ scratch/                   当初逆向抖音用的临时脚本（连通域分析、ui dump 解析等）
+│  ├─ icon/                      图标预览图（README 里引用的那几个，不提交）
+│  └─ ffmpeg/                    本地 ffmpeg（不提交，按下方说明下载）
+├─ docs/
+│  ├─ REVIEW.md / REVIEW-2.md    两轮独立代码审查报告
+│  └─ wiki-modern-api.md         libxposed 现代 API 笔记
+├─ gradlew / gradlew.bat / gradle/wrapper/   固定 Gradle 8.9
+├─ _scratch/                     本地工作区（不提交）：解包的抖音 APK、ffmpeg.zip、调试截图
+└─ README.md / .gitignore / .gitattributes
 ```
 
 ## 素材
@@ -87,12 +103,23 @@ python tools/make_icon.py assets/source/mj-swing-dual-mask.mp4 app/src/main/res 
 
 ## 构建
 
-环境：JDK 17、Android SDK（platform 34 / build-tools 34.0.0）、Gradle 8.9。
+环境：JDK 17、Android SDK（platform 34 / build-tools 34.0.0）。
+Gradle 版本由 wrapper 固定为 **8.9**，不用另外装，首次执行会自动下载。
 
 ```powershell
-gradle :app:assembleRelease
+# Windows
+.\gradlew.bat :app:assembleRelease
+# macOS / Linux
+./gradlew :app:assembleRelease
+
 # 产物：app/build/outputs/apk/release/app-release.apk
 ```
+
+SDK 路径写在 `local.properties`（`sdk.dir=...`），这个文件不进仓库。
+
+> 首次构建会去 `services.gradle.org` 下载 Gradle 8.9（约 130 MB）。国内网络如果卡住，
+> 把 `gradle/wrapper/gradle-wrapper.properties` 里的 `distributionUrl` 换成镜像即可，例如：
+> `https\://mirrors.cloud.tencent.com/gradle/gradle-8.9-bin.zip`。
 
 依赖说明：
 

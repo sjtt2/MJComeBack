@@ -1,5 +1,9 @@
 # MJ 彩蛋回归 · 第二轮复审（REVIEW-2）
 
+> 路径说明：本文写作于目录整理之前，文中 `com.mjcomeback.easteregg` 现为 `io.github.sjtt2.mjcomeback`；
+> `tools/wiki-modern-api.md` 现在 `docs/wiki-modern-api.md`，`tools/dexstrings.py` 现在 `tools/scratch/dexstrings.py`，
+> `tools/emu-*.png` 等调试截图现在 `_scratch/old-debug/`（不入库）。
+
 复审对象：`app/src/main/java/com/mjcomeback/easteregg/*`（9 个类，17:24–17:35 的版本）、
 `AndroidManifest.xml`、`build.gradle.kts`、`META-INF/xposed/{module.prop,scope.list,java_init.list}`、
 `tools/build_assets.ps1`、`tools/emu-*.png`、`README.md`。

@@ -1,26 +1,30 @@
+# --- 构建产物 ---
 build/
 app/build/
 .gradle/
-local.properties
-tools/ffmpeg/
-apk/
-ffmpeg.zip
-tools/libxposed/
-*.zip
-build-log.txt
-tools/*.png
-tools/ui*.xml
-tools/manifest-dump.txt
 assets/gen/
 
-# --- 追加 ---
-*.apk
+# --- 本机配置 ---
+local.properties
 .idea/
 *.iml
-Thumbs.db
-.DS_Store
+
+# --- 本地大文件工作区（解包的抖音 APK、ffmpeg 压缩包、调试截图等，只留本机）---
+_scratch/
+
+# --- 素材工具链（几百 MB，按 README 自行下载）---
+tools/ffmpeg/
+tools/libxposed/
+
+# --- 调试产物 ---
 tools/icon/*.png
-tools/ref-Tweak.xm
-tools/ref-MJRenderer.m
 __pycache__/
 *.pyc
+
+# --- 安装包与压缩包 ---
+*.apk
+*.zip
+
+# --- 系统垃圾 ---
+Thumbs.db
+.DS_Store
