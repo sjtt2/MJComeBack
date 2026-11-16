@@ -1,0 +1,26 @@
+build/
+app/build/
+.gradle/
+local.properties
+tools/ffmpeg/
+apk/
+ffmpeg.zip
+tools/libxposed/
+*.zip
+build-log.txt
+tools/*.png
+tools/ui*.xml
+tools/manifest-dump.txt
+assets/gen/
+
+# --- 追加 ---
+*.apk
+.idea/
+*.iml
+Thumbs.db
+.DS_Store
+tools/icon/*.png
+tools/ref-Tweak.xm
+tools/ref-MJRenderer.m
+__pycache__/
+*.pyc
