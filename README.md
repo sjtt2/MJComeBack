@@ -65,6 +65,7 @@
 │  └─ wiki-modern-api.md         libxposed 现代 API 笔记
 ├─ gradlew / gradlew.bat / gradle/wrapper/   固定 Gradle 8.9
 ├─ _scratch/                     本地工作区（不提交）：解包的抖音 APK、ffmpeg.zip、调试截图
+├─ AGENTS.md                     给 AI 助手的项目说明（改代码前先读）
 └─ README.md / .gitignore / .gitattributes
 ```
 
