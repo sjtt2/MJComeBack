@@ -162,7 +162,7 @@ MjOverlay：透明不可点击 FrameLayout → 单线程解码 WebP → Animated
 - 「发送」是启发式判定。若某个抖音版本发送后**不清空**输入框，这里就静默不播，
   需要补业务侧 hook 点（先在真机抓 `adb logcat -s MJComeback MJOverlay` 取证）。
 - 只覆盖原生 `android.widget.EditText` 及其子类；Lynx / Compose 自绘输入框不覆盖。
-- 目前**只在 Android 14 模拟器**验证过 UI 与素材播放；Xposed 注入本身需要真机 + LSPosed。
+- 已在**真机 + LSPosed** 上实测通过（评论 / 私信发送 `mj` 能正常触发）；模拟器只能验 UI 和素材播放。
 - `SettingsActivity` 的 UI 是代码里手搭的（没有 layout xml），改样式直接改 Java。
 
 ## 11. 给 AI 的协作要求
